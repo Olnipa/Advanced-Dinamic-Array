@@ -28,7 +28,6 @@ namespace Arrays
 
                         break;
                     case "another":
-
                         enteredValue = ReadValue("\nВы хотите ввести новое число?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
 
                         if (enteredValue == "yes")
