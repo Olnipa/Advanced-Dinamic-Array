@@ -24,7 +24,7 @@ namespace Arrays
                         break;
                     case "sum":
 
-                        SumOfNumbers(numbers);
+                        SumNumbers(numbers);
 
                         break;
                     case "another":
@@ -41,7 +41,7 @@ namespace Arrays
 
                             if (enteredValue == "yes")
                             {
-                                SumOfNumbers(numbers);
+                                SumNumbers(numbers);
                             }
                             else if (enteredValue == "no")
                             {
@@ -93,7 +93,7 @@ namespace Arrays
             }
         }
 
-        static void SumOfNumbers(List<int> numbers)
+        static void SumNumbers(List<int> numbers)
         {
             if (numbers.Count > 0)
             {
