@@ -23,45 +23,14 @@ namespace Arrays
                         isWorking = false;
                         break;
                     case "sum":
-
                         SumNumbers(numbers);
 
                         break;
                     case "another":
-                        enteredValue = ReadValue("\nВы хотите ввести новое число?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
-
-                        if (enteredValue == "yes")
-                        {
-                            enteredValue = ReadValue("Введите число: ");
-                            AddNumber(numbers, enteredValue);
-                        }
-                        else if (enteredValue == "no")
-                        {
-                            enteredValue = ReadValue("\nВы хотите просуммировать введенные числа?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
-
-                            if (enteredValue == "yes")
-                            {
-                                SumNumbers(numbers);
-                            }
-                            else if (enteredValue == "no")
-                            {
-                                enteredValue = ReadValue("\nВы хотите закончить работу?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
-
-                                if (enteredValue == "yes")
-                                {
-                                    isWorking = false;
-                                }
-                                else if (enteredValue == "no")
-                                {
-                                    Console.WriteLine("\nТогда мне нечем вам помочь. Для возврата в главное меню нажмите любую клавишу...");
-                                    Console.ReadKey(true);
-                                }
-                            }
-                        }
+                        CheckWhatUserWant(numbers, ref isWorking);
 
                         break;
                     default:
-
                         AddNumber(numbers, enteredValue);
 
                         break;
@@ -109,6 +78,39 @@ namespace Arrays
             else
             {
                 Console.WriteLine("\nВы еще не ввели никаких чисел. В начале введите числа, и после этого я смогу их просуммировать.");
+            }
+        }
+
+        static void CheckWhatUserWant(List<int> numbers, ref bool isWorking)
+        {
+            string enteredValue = ReadValue("\nВы хотите ввести новое число?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
+
+            if (enteredValue == "yes")
+            {
+                AddNumber(numbers, ReadValue("Введите число: "));
+            }
+            else if (enteredValue == "no")
+            {
+                enteredValue = ReadValue("\nВы хотите просуммировать введенные числа?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
+
+                if (enteredValue == "yes")
+                {
+                    SumNumbers(numbers);
+                }
+                else if (enteredValue == "no")
+                {
+                    enteredValue = ReadValue("\nВы хотите закончить работу?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
+
+                    if (enteredValue == "yes")
+                    {
+                        isWorking = false;
+                    }
+                    else if (enteredValue == "no")
+                    {
+                        Console.WriteLine("\nТогда мне нечем вам помочь. Приходите, если захотите сложить числа...");
+                        isWorking = false;
+                    }
+                }
             }
         }
     }
