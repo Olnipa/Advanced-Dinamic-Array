@@ -23,16 +23,13 @@ namespace Arrays
                         isWorking = false;
                         break;
                     case "sum":
-                        SumNumbers(numbers);
-
+                        Summarize(numbers);
                         break;
                     case "another":
-                        CheckWhatUserWant(numbers, ref isWorking);
-
+                        AskWhatUserWant(numbers, ref isWorking);
                         break;
                     default:
                         AddNumber(numbers, enteredValue);
-
                         break;
                 }
             }
@@ -62,18 +59,18 @@ namespace Arrays
             }
         }
 
-        static void SumNumbers(List<int> numbers)
+        static void Summarize(List<int> numbers)
         {
             if (numbers.Count > 0)
             {
-                int sumOfNumbers = 0;
+                int sum = 0;
 
                 for (int j = 0; j < numbers.Count; j++)
                 {
-                    sumOfNumbers += numbers[j];
+                    sum += numbers[j];
                 }
 
-                Console.WriteLine("\nСумма введенных чисел: " + sumOfNumbers);
+                Console.WriteLine("\nСумма введенных чисел: " + sum);
             }
             else
             {
@@ -81,7 +78,7 @@ namespace Arrays
             }
         }
 
-        static void CheckWhatUserWant(List<int> numbers, ref bool isWorking)
+        static void AskWhatUserWant(List<int> numbers, ref bool isWorking)
         {
             string enteredValue = ReadValue("\nВы хотите ввести новое число?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
 
@@ -95,7 +92,7 @@ namespace Arrays
 
                 if (enteredValue == "yes")
                 {
-                    SumNumbers(numbers);
+                    Summarize(numbers);
                 }
                 else if (enteredValue == "no")
                 {
