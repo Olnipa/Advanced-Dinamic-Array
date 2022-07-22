@@ -11,11 +11,11 @@ namespace Arrays
 
             Console.WriteLine("Привет! Я - калькулятор однофункциональный с функцией запоминания. Вы вводите числа, а я их суммирую, если вы попросите.\n" +
                 "\nЕсли Вы хоитет просуммировать введенные числа - введите \"Sum\".\nЕсли вы хотите закончить работу в однофункциональном " +
-                "калькуляторе - введите \"Exit\".\nЕсли вы хотите ввести число - введите число.\nЕсли вы хотите сделать что-то другое - введите \"Another\".");
+                "калькуляторе - введите \"Exit\".\nЕсли вы хотите ввести число - введите число.");
 
             while (isWorking)
             {
-                string enteredValue = ReadValue("\nВведите число, \"Sum\", \"Exit\" или \"Another\": ");
+                string enteredValue = ReadValue("\nВведите число, \"Sum\" или \"Exit\": ");
 
                 switch (enteredValue)
                 {
@@ -23,10 +23,7 @@ namespace Arrays
                         isWorking = false;
                         break;
                     case "sum":
-                        Summarize(numbers);
-                        break;
-                    case "another":
-                        AskWhatUserWant(numbers, ref isWorking);
+                        WriteSum(numbers);
                         break;
                     default:
                         AddNumber(numbers, enteredValue);
@@ -59,7 +56,7 @@ namespace Arrays
             }
         }
 
-        static void Summarize(List<int> numbers)
+        static void WriteSum(List<int> numbers)
         {
             if (numbers.Count > 0)
             {
@@ -75,39 +72,6 @@ namespace Arrays
             else
             {
                 Console.WriteLine("\nВы еще не ввели никаких чисел. В начале введите числа, и после этого я смогу их просуммировать.");
-            }
-        }
-
-        static void AskWhatUserWant(List<int> numbers, ref bool isWorking)
-        {
-            string enteredValue = ReadValue("\nВы хотите ввести новое число?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
-
-            if (enteredValue == "yes")
-            {
-                AddNumber(numbers, ReadValue("Введите число: "));
-            }
-            else if (enteredValue == "no")
-            {
-                enteredValue = ReadValue("\nВы хотите просуммировать введенные числа?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
-
-                if (enteredValue == "yes")
-                {
-                    Summarize(numbers);
-                }
-                else if (enteredValue == "no")
-                {
-                    enteredValue = ReadValue("\nВы хотите закончить работу?\nYes - да\nNo - нет\nВведите \"Yes\" или \"No\": ");
-
-                    if (enteredValue == "yes")
-                    {
-                        isWorking = false;
-                    }
-                    else if (enteredValue == "no")
-                    {
-                        Console.WriteLine("\nТогда мне нечем вам помочь. Приходите, если захотите сложить числа...");
-                        isWorking = false;
-                    }
-                }
             }
         }
     }
